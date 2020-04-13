@@ -10,14 +10,19 @@
   - [sh pre-install.sh, Running pre installation script]
   - [sh fonts/install.sh, Installing Powerline fonts]
 
+- create:
+    - ~/Code
+    - ~/.vim/undo-history
+    - ~/.oh-my-zsh/custom/themes
+
 - link:
     ~/.zshrc: zshrc
     ~/.gitconfig: gitconfig
     ~/.vimrc: vimrc
     ~/.vim_runtime: vim_awesome
+    ~/.oh-my-zsh/custom/themes: 
+        glob: true
+        path: zshthemes/*
+        relink: true
     ~/Brewfile: Brewfile
 
-- create:
-    - ~/Code
-    - ~/.vim/undo-history
-    - ~/.oh-my-zsh/custom/themes
