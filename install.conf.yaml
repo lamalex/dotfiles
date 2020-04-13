@@ -16,7 +16,9 @@
     - ~/.oh-my-zsh/custom/themes
 
 - link:
-    ~/.zshrc: zshrc
+    ~/.zshrc:
+        path: zshrc
+        force: true
     ~/.gitconfig: gitconfig
     ~/.vimrc: vimrc
     ~/.vim_runtime: vim_awesome

@@ -72,7 +72,9 @@ ZSH_THEME="af-lambda"
 plugins=(git osx pipenv docker yarn npm)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.iterm2_shell_integration.zsh
+if [ $(uname) == "Darwin" ]; then
+    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+fi
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -100,21 +102,16 @@ export HOMEBREW_EDITOR="code -w"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 # Set up pyenv
-eval "$(pyenv init -)"
+if [ -x "$(command -v pyenv)" ]; then
+    eval "$(pyenv init -)"
+fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
+if [ -x "$(command -v rvm)" ]; then
+    export PATH="$PATH:$HOME/.rvm/bin"
+fi
 
 # Added by serverless binary installer
 export PATH="$HOME/.serverless/bin:$PATH"
