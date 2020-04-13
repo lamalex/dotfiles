@@ -5,15 +5,20 @@
 
 - clean: ['~', '~/.oh-my-zsh/custom/', '~/.oh-my-zsh/custom/themes/']
 
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  - [sh pre-install.sh, Running pre installation script]
+  - [sh fonts/install.sh, Installing Powerline fonts]
+
 - link:
     ~/.zshrc: zshrc
     ~/.gitconfig: gitconfig
     ~/.vim: vim
     ~/.vimrc: vimrc
+    ~/.vim_runtime: vim_awesome
     ~/Brewfile: Brewfile
 
 - create:
+    - ~/Code
     - ~/.vim/undo-history
-
-- shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    - ~/.oh-my-zsh/custom/themes
