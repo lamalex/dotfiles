@@ -2,13 +2,12 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/alexlauni/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
 ZSH_THEME="af-lambda"
 
 # Set list of themes to pick from when loading at random
@@ -69,11 +68,17 @@ ZSH_THEME="af-lambda"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx pipenv docker yarn npm)
+plugins=(git docker yarn npm)
+if [ $(uname) = "Darwin" ]; then
+    plugins+=(osx)
+elif [ $(lsb_release -si) = "Ubuntu" ]; then
+    plugins+=(ubuntu)
+fi
 
 source $ZSH/oh-my-zsh.sh
-if [ $(uname) == "Darwin" ]; then
+if [ $(uname) = "Darwin" ]; then
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+    export HOMEBREW_EDITOR="code -w"
 fi
 # User configuration
 
@@ -88,7 +93,6 @@ export LANG=en_US.UTF-8
 # else
 #   export EDITOR='mvim'
 # fi
-export HOMEBREW_EDITOR="code -w"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -119,3 +123,7 @@ export PATH="$HOME/.serverless/bin:$PATH"
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+# This must be the last line in zshrc!
+source ${HOME}/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+

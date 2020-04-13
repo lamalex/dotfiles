@@ -19,6 +19,7 @@
     ~/.zshrc:
         path: zshrc
         force: true
+    ~/.zsh-syntax-highlighting: zsh-syntax-highlighting
     ~/.gitconfig: gitconfig
     ~/.vimrc: vimrc
     ~/.vim_runtime: vim_awesome
