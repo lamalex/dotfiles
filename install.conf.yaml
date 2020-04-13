@@ -13,7 +13,6 @@
 - link:
     ~/.zshrc: zshrc
     ~/.gitconfig: gitconfig
-    ~/.vim: vim
     ~/.vimrc: vimrc
     ~/.vim_runtime: vim_awesome
     ~/Brewfile: Brewfile
