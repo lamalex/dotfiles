@@ -27,5 +27,4 @@
         glob: true
         path: zshthemes/*
         relink: true
-    ~/Brewfile: Brewfile
 
