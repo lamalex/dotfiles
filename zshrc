@@ -70,7 +70,7 @@ ZSH_THEME="af-lambda"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git docker yarn npm)
 if [ $(uname) = "Darwin" ]; then
-    plugins+=(osx, swiftpm)
+    plugins+=(osx swiftpm)
 elif [ $(lsb_release -si) = "Ubuntu" ]; then
     plugins+=(ubuntu)
 fi
