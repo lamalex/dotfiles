@@ -68,7 +68,7 @@ ZSH_THEME="af-lambda"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker yarn npm)
+plugins=(git docker yarn npm rust)
 if [ $(uname) = "Darwin" ]; then
     plugins+=(osx swiftpm)
 elif [ $(lsb_release -si) = "Ubuntu" ]; then
