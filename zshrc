@@ -105,7 +105,12 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
+alias ls='exa'
+alias grep='rg'
+alias ps='procs'
+alias cat='bat'
+alias find='fd'
+alias sed='sd'
 
 # Set up pyenv
 if [ -x "$(command -v pyenv)" ]; then
