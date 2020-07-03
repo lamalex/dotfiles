@@ -1,0 +1,76 @@
+add_newline = false
+
+[character]
+symbol = "λ"
+style_success = "yellow"
+style_failure = "red"
+
+[cmd_duration]
+style = "yellow"
+
+[directory]
+style = "cyan"
+
+[package]
+disabled = true
+
+[aws]
+disabled = true
+
+[git_branch]
+style = "purple"
+
+[git_commit]
+style = "green"
+
+[git_status]
+style = "dimmed green"
+modified = "*"
+
+[conda]
+style = "dimmed cyan"
+
+prompt_order = [
+    "username",
+    "hostname",
+    "kubernetes",
+    "directory",
+    "git_branch",
+    "git_commit",
+    "git_state",
+    "git_status",
+    "hg_branch",
+    "docker_context",
+    "package",
+    "dotnet",
+    "elixir",
+    "elm",
+    "erlang",
+    "golang",
+    "haskell",
+    "java",
+    "julia",
+    "nim",
+    "nodejs",
+    "ocaml",
+    "php",
+    "purescript",
+    "python",
+    "ruby",
+    "rust",
+    "terraform",
+    "zig",
+    "nix_shell",
+    "conda",
+    "memory_usage",
+    "aws",
+    "env_var",
+    "crystal",
+    "cmd_duration",
+    "custom",
+    "line_break",
+    "jobs",
+    "battery",
+    "time",
+    "character",
+]
