@@ -68,7 +68,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker yarn npm rust cargo)
+plugins=(git docker yarn npm rust cargo tmux)
 if [ $(uname) = "Darwin" ]; then
     plugins+=(osx swiftpm)
 elif [ $(lsb_release -si) = "Ubuntu" ]; then
@@ -81,7 +81,7 @@ if [ $(uname) = "Darwin" ]; then
     export HOMEBREW_EDITOR="code -w"
 fi
 # User configuration
-
+if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -91,7 +91,7 @@ export LANG=en_US.UTF-8
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='vim'
 fi
 
 # Compilation flags
@@ -149,5 +149,8 @@ function load_conda() {
 
 export STARSHIP_CONFIG=~/dotfiles/starship.toml
 eval "$(starship init zsh)"
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+fi
 # This must be the last line in zshrc!
 source ${HOME}/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
