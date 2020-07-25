@@ -149,8 +149,5 @@ function load_conda() {
 
 export STARSHIP_CONFIG=~/dotfiles/starship.toml
 eval "$(starship init zsh)"
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux attach -t default || tmux new -s default
-fi
 # This must be the last line in zshrc!
 source ${HOME}/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
