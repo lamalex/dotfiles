@@ -4,7 +4,6 @@
 	name = Alexander Launi
 	email = alex.launi@gmail.com
 [core]
-	editor = /Applications/XiEditor.app/Contents/MacOS/XiEditor
 	excludesFile = /Users/alexlauni/.gitignore
 [init]
 	defaultBranch = main

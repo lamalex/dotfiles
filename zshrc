@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="${HOME}/.oh-my-zsh"
@@ -68,13 +68,13 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker yarn npm rust cargo tmux)
+plugins=(git docker yarn npm rust cargo kubectl flux)
 if [ $(uname) = "Darwin" ]; then
     plugins+=(osx swiftpm)
 elif [ $(lsb_release -si) = "Ubuntu" ]; then
     plugins+=(ubuntu)
 fi
-
+eval "$(nodenv init -)"
 source $ZSH/oh-my-zsh.sh
 if [ $(uname) = "Darwin" ]; then
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -106,13 +106,12 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='exa'
-alias grep='rg'
-alias ps='procs'
 alias cat='bat'
 alias find='fd'
-alias sed='sd'
 alias htop='zenith'
-
+alias k3sctl='kubectl --kubeconfig=/Users/alexlauni/.kube/config.d/k3s.yaml'
+alias kargctl='kubectl --kubeconfig=/Users/alexlauni/.kube/config.d/argolis.yaml --insecure-skip-tls-verify'
+alias klkectl='kubectl --kubeconfig=/Users/alexlauni/.kube/config.d/experimental-kubeconfig.yaml'
 # Set up pyenv
 if [ -x "$(command -v pyenv)" ]; then
     eval "$(pyenv init -)"
@@ -151,3 +150,6 @@ export STARSHIP_CONFIG=~/dotfiles/starship.toml
 eval "$(starship init zsh)"
 # This must be the last line in zshrc!
 source ${HOME}/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# added by travis gem
+[ ! -s /Users/alexlauni/.travis/travis.sh ] || source /Users/alexlauni/.travis/travis.sh
