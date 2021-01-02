@@ -1,3 +1,7 @@
+function set_win_title() {
+	echo -ne "\033]0; ⚰️  $(whoami)@$(hostname):$PWD \007"
+}
+
 cmd_exists () {
   type $1 &>/dev/null 
 }
@@ -42,6 +46,7 @@ safe_alias cat bat
 safe_alias ls "exa --icons"
 safe_alias du dust
 
+precmd_functions+=(set_win_title)
 # Initialize starship as prompt, must be last
 if `cmd_exists starship`; then
   eval "$(starship init zsh)"
