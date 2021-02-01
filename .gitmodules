@@ -1,0 +1,9 @@
+[submodule ".vim/pack/preservim/start/nerdtree"]
+	path = .vim/pack/preservim/start/nerdtree
+	url = https://github.com/preservim/nerdtree.git
+[submodule ".vim/pack/fzf/start/fzf"]
+	path = .vim/pack/fzf/start/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule ".vim/pack/tpope/start/sensible"]
+	path = .vim/pack/tpope/start/sensible
+	url = https://github.com/tpope/vim-sensible.git
