@@ -46,6 +46,8 @@ safe_alias cat bat
 safe_alias ls "exa --icons"
 safe_alias du dust
 
+export PATH=~/bin:/usr/local/opt/curl/bin:/usr/local/opt/php@7.3/bin:/usr/local/opt/mysql-client/bin:$PATH
+
 precmd_functions+=(set_win_title)
 # Initialize starship as prompt, must be last
 if `cmd_exists starship`; then
