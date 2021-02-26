@@ -1,0 +1,19 @@
+[user]
+	name = Alex Launi
+	email = dev@launi.me
+[credential]
+	helper = osxkeychain
+[includeIf "gitdir:~/Code/Ford/"]
+	path = ~/Code/Ford/.gitconfig_ford
+[includeIf "gitdir:~/Code/ODU/"]
+	path = ~/Code/ODU/.gitconfig_odu
+
+[alias]
+	# git change-commits GIT_COMMITTER_NAME "old name" "new name"
+	change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
+[core]
+	editor = vim
