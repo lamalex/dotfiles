@@ -3,11 +3,6 @@
 	email = dev@launi.me
 [credential]
 	helper = osxkeychain
-[includeIf "gitdir:~/Code/Ford/"]
-	path = ~/Code/Ford/.gitconfig_ford
-[includeIf "gitdir:~/Code/ODU/"]
-	path = ~/Code/ODU/.gitconfig_odu
-
 [init]
 	defaultBranch = main
 [pull]
