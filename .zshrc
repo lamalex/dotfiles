@@ -2,25 +2,31 @@ function set_win_title() {
 	echo -ne "\033]0; ⚰️  $(whoami)@$(hostname):$PWD \007"
 }
 
-cmd_exists () {
+function cmd_exists () {
   type $1 &>/dev/null 
 }
 
-source_if_exists () {
+function source_if_exists () {
   [ -f $1 ] && source $1
 }
 
-safe_alias () {
+function safe_alias () {
   [[ $(cmd_exists $2) -eq 0 ]] && alias $1=$2
 }
 
 # Load homebrew autocompletions
 if `cmd_exists brew`; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$(brew --prefix)/share/zsh-completions:$FPATH
-
-  autoload -Uz compinit
-  compinit
 fi
+
+autoload -U +X bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+
+# Terraform autocompletions
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+# Init asdf
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 # Setup zsh autocomplete
 source_if_exists /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -30,7 +36,6 @@ source_if_exists ~/.fzf.zsh
 
 # Setup asdf integration
 source_if_exists /usr/local/opt/asdf/asdf.sh
-
 
 if `cmd_exists zoxide`; then
   eval "$(zoxide init zsh)"
@@ -45,8 +50,6 @@ fi
 safe_alias cat bat
 safe_alias ls "exa --icons"
 safe_alias du dust
-
-export PATH=~/bin:/usr/local/opt/curl/bin:/usr/local/opt/php@7.3/bin:/usr/local/opt/mysql-client/bin:$PATH
 
 precmd_functions+=(set_win_title)
 # Initialize starship as prompt, must be last
